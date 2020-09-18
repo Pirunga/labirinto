@@ -1,0 +1,45 @@
+*, html {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vh;
+    height: 100vh;
+}
+
+    body div#container {
+        max-width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        body div#container div#parede {
+            display: flex;
+            min-width: 4.76%;
+            min-height: 4.76%;
+            background-color: gray;
+        }
+
+        body div#container div.caminho {
+            display: flex;
+            min-width: 4.76%;
+            min-height: 4.76%;
+            background-color: white;
+        }
+
+        body div#container div#personagem {
+            display: flex;
+            min-width: 4.76%;
+            min-height: 4.76%;
+            background-color: red;
+        }
+
+        body div#container div#final {
+            display: flex;
+            min-width: 4.76%;
+            min-height: 4.76%;
+            background-color: green;
+        }

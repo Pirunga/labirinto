@@ -10,7 +10,7 @@ body{
 }
 
     body div#container {
-        max-width: 100%;
+        min-width: 99vh;
         height: 100%;
         display: flex;
         flex-wrap: wrap;

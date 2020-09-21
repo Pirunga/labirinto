@@ -1,108 +1,27 @@
-let map = [
-    "WWWWWWWWWWWWWWWWWWWWW",
-    "W   W     W     W W W",
-    "W W W WWW WWWWW W W W",
-    "W W W   W     W W   W",
-    "W WWWWWWW W WWW W W W",
-    "W         W     W W W",
-    "W WWW WWWWW WWWWW W W",
-    "W W   W   W W     W W",
-    "W WWWWW W W W WWW W F",
-    "S     W W W W W W WWW",
-    "WWWWW W W W W W W W W",
-    "W     W W W   W W W W",
-    "W WWWWWWW WWWWW W W W",
-    "W       W       W   W",
-    "WWWWWWWWWWWWWWWWWWWWW",
+let labirinto = [
+    ["W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
+    ["W", " ", " ", " ", "W", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", "W", " ", "W", " ", "W", "W", "W", " ", "W", "W", "W", "W", "W", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", "W", " ", "W", " ", " ", " ", "W", " ", " ", " ", " ", " ", "W", " ", "W", " ", " ", " ", "W"],
+    ["W", " ", "W", "W", "W", "W", "W", "W", "W", " ", "W", " ", "W", "W", "W", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", " ", " ", " ", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", "W", "W", "W", " ", "W", "W", "W", "W", "W", " ", "W", "W", "W", "W", "W", " ", "W", " ", "W"],
+    ["W", " ", "W", " ", " ", " ", "W", " ", " ", " ", "W", " ", "W", " ", " ", " ", " ", " ", "W", " ", "W"],
+    ["W", " ", "W", "W", "W", "W", "W", " ", "W", " ", "W", " ", "W", " ", "W", "W", "W", " ", "W", " ", "F"],
+    ["S", " ", " ", " ", " ", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", "W", "W"],
+    ["W", "W", "W", "W", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", " ", " ", " ", " ", "W", " ", "W", " ", "W", " ", " ", " ", "W", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", "W", "W", "W", "W", "W", "W", "W", " ", "W", "W", "W", "W", "W", " ", "W", " ", "W", " ", "W"],
+    ["W", " ", " ", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", " ", " ", "W", " ", " ", " ", "W"],
+    ["W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
 ];
 
-const moveBox = (evt) => {
-    let keyPressed = evt.key;
-    let actualPosition = map[positonPersonagem('y')][positonPersonagem('x')];
-    let up = map[positonPersonagem('y') + 1][positonPersonagem('x')];
-    let down = map[positonPersonagem('y') - 1][positonPersonagem('x')];
-    let right = map[positonPersonagem('y')][positonPersonagem('x') + 1];
-    let left = map[positonPersonagem('y')][positonPersonagem('x') - 1];
+const container = document.getElementById('container');
 
-    switch (keyPressed) {
-        case "ArrowUp":
-            if (up === ' ') {
-                actualPosition = ' ';
-                up = 'S';
-            }
-
-            if (up !== ' ') {
-                alert('Você esbarrou em uma parede!');
-            }
-
-            mapa;
-            break;
-        
-        case "ArrowDown":
-            if (down === ' ') {
-                actualPosition = ' ';
-                down = 'S';
-            }
-
-            if (down !== ' ') {
-                alert('Você esbarrou em uma parede!');
-            }
-
-            mapa;
-            break;
-
-        case "ArrowLeft":
-            if (left === ' ') {
-                actualPosition = ' ';
-                left = 'S';
-            }
-
-            if (left !== ' ') {
-                alert('Você esbarrou em uma parede!');
-            }
-
-            mapa;
-            break;
-
-        case "ArrowRight":
-            if (right === ' ') {
-                actualPosition = ' ';
-                right = 'S';
-            }
-
-            if (right !== ' ') {
-                alert('Você esbarrou em uma parede!');
-            }
-            console.log(map);
-
-            break;
-    }
-}
-
-const positonPersonagem = (position) => {
-    for (let i = 0; i < map.length; i++) {
-        let mapX = map[i];
-
-        for (let j = 0; j < mapX.length; j++) {
-            if (mapX[j] === 'S') {
-
-                if (position === 'x') {
-                    return j;
-                }
-
-                return i;
-            }
-        }
-    }
-}
-
-const container = document.createElement('div');
-container.id = "container";
-document.body.appendChild(container);
-
-const mapa = () => {
-    for (let i = 0; i < map.length; i++) {
-        let mapj = map[i];
+const imprimirLabirinto = () => {
+    container.innerHTML = '';
+    for (let i = 0; i < labirinto.length; i++) {
+        let mapj = labirinto[i];
         for (let j = 0; j < mapj.length; j++) {
             if (mapj[j] === 'W') {
                 const divWall = document.createElement('div');
@@ -131,6 +50,153 @@ const mapa = () => {
         }
     }
 }
-mapa();
+
+imprimirLabirinto();
+
+const moveBox = (evt) => {
+    let keyPressed = evt.key;
+    let up = labirinto[positonPersonagem('linha') - 1][positonPersonagem('coluna')];
+    let down = labirinto[positonPersonagem('linha') + 1][positonPersonagem('coluna')];
+    let right = labirinto[positonPersonagem('linha')][positonPersonagem('coluna') + 1];
+    let left = labirinto[positonPersonagem('linha')][positonPersonagem('coluna') - 1];
+
+    switch (keyPressed) {
+        case "ArrowUp":
+            if (up === 'F') {
+                alert('Parabéns, você ganhou !!!');
+                alterarLab('up');
+                setTimeout(function () {
+                    document.location.reload(true);
+                }, 2000);
+
+                break;
+            }
+
+            if (up === ' ') {
+                alterarLab('up');
+            } else {
+                alert('Você esbarrou em uma parede!');
+            }
+
+            break;
+
+        case "ArrowDown":
+            if (down === 'F') {
+                alert('Parabéns, você ganhou !!!');
+                alterarLab('down');
+                setTimeout(function () {
+                    document.location.reload(true);
+                }, 2000);
+
+                break;
+            }
+
+            if (down === ' ') {
+                alterarLab('down');
+            } else {
+                alert('Você esbarrou em uma parede!');
+            }
+
+            break;
+
+        case "ArrowLeft":
+            if (left === 'F') {
+                alert('Parabéns, você ganhou !!!');
+                alterarLab('left');
+                setTimeout(function () {
+                    document.location.reload(true);
+                }, 2000);
+
+                break;
+            }
+
+            if (left === ' ') {
+                alterarLab('left');
+            } else {
+                alert('Você esbarrou em uma parede!');
+            }
+
+            break;
+
+        case "ArrowRight":
+            if (right === 'F') {
+                alert('Parabéns, você ganhou !!!');
+                alterarLab('right');
+                setTimeout(function () {
+                    document.location.reload(true);
+                }, 2000);
+
+                break;
+            }
+
+            if (right === ' ') {
+                alterarLab('right');
+            } else {
+                alert('Você esbarrou em uma parede!');
+            }
+
+            break;
+        default:
+            break;
+    }
+}
+
+const positonPersonagem = (position) => {
+    for (let i = 0; i < labirinto.length; i++) {
+        let mapX = labirinto[i];
+
+        for (let j = 0; j < mapX.length; j++) {
+            if (mapX[j] === 'S') {
+
+                if (position === 'coluna') {
+                    return j;
+                }
+
+                return i;
+            }
+        }
+    }
+}
+
+const alterarLab = (direction) => {
+    let linha = positonPersonagem('linha');
+    let coluna = positonPersonagem('coluna');
+
+    switch (direction) {
+        case 'up':
+            labirinto[linha][coluna] = ' ';
+            labirinto[linha - 1][coluna] = 'S';
+            imprimirLabirinto();
+            break;
+
+        case 'down':
+            labirinto[linha][coluna] = ' ';
+            labirinto[linha + 1][coluna] = 'S';
+            imprimirLabirinto();
+            break;
+
+        case 'left':
+            labirinto[linha][coluna] = ' ';
+            labirinto[linha][coluna - 1] = 'S';
+            imprimirLabirinto();
+            break;
+
+        case 'right':
+            labirinto[linha][coluna] = ' ';
+            labirinto[linha][coluna + 1] = 'S';
+            imprimirLabirinto();
+            break;
+
+        default:
+            break;
+    }
+}
+
+const checkWinner = () => {
+    let actualPosition = labirinto[positonPersonagem('linha')][positonPersonagem('coluna')];
+    if (actualPosition === 'F') {
+        alert
+    }
+}
 
 document.addEventListener('keydown', moveBox);
